@@ -51,9 +51,18 @@ public class main {
 
                     // List of items for FURNITURE
                 } else if (category.equals("furniture")) {
-                    System.out.println("Item: Sofas    Price: $450.99    Availability: 4");
-                    System.out.println("Item: Beds     Price: $350.90   Availability: 1");
-                    System.out.println("Item: Tables   Price: $245.00    Availability: 5");
+                    System.out.println("Item: Sofas    Price: $450.99    Availability: " + sofaStock);
+                    if (sofaStock == 0){
+                        System.out.println("Out of Stock");
+                    }
+                    System.out.println("Item: Beds     Price: $350.90   Availability: " + bedStock);
+                    if (bedStock == 0){
+                        System.out.println("Out of Stock");
+                    }
+                    System.out.println("Item: Tables   Price: $245.00    Availability: " + tableStock);
+                    if (tableStock == 0){
+                        System.out.println("Out of Stock");
+                    }
 
                     System.out.println("Enter the item you want to add to your cart: ");
                     input = sc.nextLine().toLowerCase();
@@ -68,7 +77,7 @@ public class main {
                     } else if (input.equals("beds") && quantity <= bedStock) {
                         carts.add("Beds x " + quantity + " -- $" + (beds * quantity));
                         bedStock = bedStock - quantity;
-                    } else if (input.equals("table") && quantity <= tableStock) {
+                    } else if (input.equals("tables") && quantity <= tableStock) {
                         carts.add("Tables x " + quantity + " -- $" + (tables * quantity));
                         tableStock = tableStock - quantity;
                     } else {
@@ -77,15 +86,24 @@ public class main {
 
                     // List of items for HOME DECOR
                 } else if (category.equals("home decor")) {
-                    System.out.println("Item: Wall Art   Price: $45.90    Availability: 3");
-                    System.out.println("Item: Clocks     Price: $6.99     Availability: 2");
-                    System.out.println("Item: Carpets    Price: $67.00    Availability: 3");
+                    System.out.println("Item: Wall Art   Price: $45.90    Availability: " + wallArtStock);
+                    if (wallArtStock == 0){
+                        System.out.println("Out of Stock");
+                    }
+                    System.out.println("Item: Clocks     Price: $6.99     Availability: " + clockStock);
+                    if (clockStock == 0){
+                        System.out.println("Out of Stock");
+                    }
+                    System.out.println("Item: Carpets    Price: $67.00    Availability: " + carpetStock);
+                    if (carpetStock == 0){
+                        System.out.println("Out of Stock");
+                    }
 
                     System.out.println("Enter the item you want to add to your cart: ");
                     input = sc.nextLine().toLowerCase();
                     System.out.println("Enter the number of the item you want: ");
                     quantity = sc.nextInt();
-                    sc.nextLine(); //Consume's the next line
+                    sc.nextLine(); //Consume the next line
 
                     // Adding the user's order's to cart
                     if (input.equals("wall art") && quantity <= wallArtStock) {
@@ -103,9 +121,18 @@ public class main {
 
                     // List of items for KITCHEN
                 } else if (category.equals("kitchen")) {
-                    System.out.println("Item: Pots & Pans       Price: $54.00    Availability: 3");
-                    System.out.println("Item: Plates & Bowls    Price: $15.99    Availability: 1");
-                    System.out.println("Item: Coffee Machine    Price: $70.00    Availability: 5");
+                    System.out.println("Item: Pots & Pans       Price: $54.00    Availability: " + potsPansStock);
+                    if (potsPansStock == 0){
+                        System.out.println("Out of Stock");
+                    }
+                    System.out.println("Item: Plates & Bowls    Price: $15.99    Availability: " + platesBowlStock);
+                    if (platesBowlStock == 0){
+                        System.out.println("Out of Stock");
+                    }
+                    System.out.println("Item: Coffee Machine    Price: $70.00    Availability: " + coffeeMachineStock);
+                    if (coffeeMachineStock == 0){
+                        System.out.println("Out of Stock");
+                    }
 
                     System.out.println("Enter the item you want to add to your cart: ");
                     input = sc.nextLine().toLowerCase();
@@ -137,6 +164,118 @@ public class main {
                     System.out.println(items);
                 }
             }
+
+            // Updating & removing option
+            System.out.println("Would you like to change your cart? | Options: update/remove/none ");
+            String update = sc.nextLine().toLowerCase();
+
+            // Update option
+            if (update.equals("update")) {
+                System.out.println("Here are the items in your cart: ");
+                for (int i = 0; i < carts.size(); i++){
+                   System.out.println((i + 1) + ": " + carts.get(i));
+                }
+
+                System.out.println("Which number do you want to update? ");
+                int index = sc.nextInt() - 1; // For the array index to align
+                sc.nextLine(); // Consume the next line
+
+                System.out.println("Enter the new quantity you want:  ");
+                int newQuantity = sc.nextInt();
+                sc.nextLine(); // Consume the next line
+
+                String item = carts.get(index);
+
+                // Get the name of the item
+                String itemName = "";
+                for (int i = 0; i < item.length(); i++){
+                    if (item.charAt(i) == 'x'){
+                        itemName = item.substring(0, i-1).toLowerCase();
+                        break;
+                    }
+                }
+
+                boolean updating = false;
+
+                // Update cart for FURNITURE
+                if (itemName.equals("sofas") && newQuantity <= sofaStock + quantity){
+                    sofaStock = sofaStock + quantity - newQuantity;
+                    carts.set(index, "Sofas x" + newQuantity + "-- $" + (sofa * newQuantity));
+                    updating = true;
+                } else if (itemName.equals("beds") && newQuantity <= bedStock + quantity){
+                    bedStock = bedStock + quantity - newQuantity;
+                    carts.set(index, "Beds x" + newQuantity + "-- $" + (beds * newQuantity));
+                    updating = true;
+                }
+                else if (itemName.equals("tables") && newQuantity <= tableStock + quantity){
+                    tableStock = tableStock + quantity - newQuantity;
+                    carts.set(index, "Tables x" + newQuantity + "-- $" + (tables * newQuantity));
+                    updating = true;
+                }
+
+                // Update cart for HOME DECOR
+                if (itemName.equals("wall art") && newQuantity <= wallArtStock + quantity){
+                    wallArtStock = wallArtStock + quantity - newQuantity;
+                    carts.set(index, "Wall Art x" + newQuantity + "-- $" + (wallArt * newQuantity));
+                    updating = true;
+                }  else if (itemName.equals("clocks") && newQuantity <= clockStock + quantity){
+                    clockStock = clockStock + quantity - newQuantity;
+                    carts.set(index, "Clocks x" + newQuantity + "-- $" + (clocks * newQuantity));
+                    updating = true;
+                } else if (itemName.equals("carpet") && newQuantity <= carpetStock + quantity) {
+                    carpetStock = carpetStock + quantity - newQuantity;
+                    carts.set(index, "Carpet x" + newQuantity + "-- $" + (carpets * newQuantity));
+                    updating = true;
+                }
+
+                // Update cart for KITCHEN
+                if (itemName.equals("pots & pans") && newQuantity <= potsPansStock + quantity){
+                    potsPansStock = potsPansStock + quantity - newQuantity;
+                    carts.set(index, "Pots & Pans x" + newQuantity + "-- $" + (potsPans * newQuantity));
+                    updating = true;
+                }  else if (itemName.equals("plates & bowls") && newQuantity <= platesBowlStock + quantity){
+                    platesBowlStock = platesBowlStock + quantity - newQuantity;
+                    carts.set(index, "Plates & Bowls x" + newQuantity + "-- $" + (platesBowls * newQuantity));
+                    updating = true;
+                } else if (itemName.equals("coffee machine") && newQuantity <= coffeeMachineStock + quantity) {
+                    coffeeMachineStock = coffeeMachineStock + quantity - newQuantity;
+                    carts.set(index, "Coffee Machine x" + newQuantity + "-- $" + (coffeeMachine * newQuantity));
+                    updating = true;
+                }
+
+                if (!updating){
+                    System.out.println("Invalid response or not enough stock");
+                }
+
+                // Remove option
+            } else if (update.equals("remove")){
+                System.out.println("Here are the items in your cart: ");
+                for (int i = 0; i < carts.size(); i++){
+                    System.out.println((i + 1) + ": " + carts.get(i));
+                }
+
+                System.out.println("Enter the number of items you want to remove : ");
+                int index = sc.nextInt() - 1;
+                sc.nextLine(); // Consume the new line
+
+
+                String removedItem = carts.get(index);
+
+                // Get the name of the item
+                String itemName = "";
+                for (int i = 0; i < removedItem.length(); i++){
+                    if (removedItem.charAt(i) == 'x'){
+                        itemName = removedItem.substring(0, i-1).toLowerCase();
+                        break;
+                    }
+                }
+
+                if(itemName.equals("sofas")){
+                    sofaStock =
+                }
+
+            }
+
         } else {
             System.out.println("Invalid User type");
         }
