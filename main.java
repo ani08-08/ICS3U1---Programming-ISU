@@ -213,7 +213,7 @@ public class main {
                         int categories = sc.nextInt();
 
 
-                        if (categories == 1) {
+                        if (categories == 1) { // Furniture category
                             System.out.println("Item 1: Sofas    Price: $450.99    Availability: " + sofaStock);
                             if (sofaStock == 0) {
                                 System.out.println("Out of Stock");
@@ -232,24 +232,20 @@ public class main {
                             input = sc.nextInt();
                             System.out.println("Enter the number of the item you want: ");
                             quantity = sc.nextInt();
-                            sc.nextLine(); // consume the next line
+                            sc.nextLine();
 
 
                             // Adding the user's order's to cart
                             if (input == 1 && quantity <= sofaStock) {
-                                quantity += quantity;
-                                boolean found = false;
+                                // First check if item exists in cart and remove it
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Sofas")) {
                                         carts.remove(i);
-                                        carts.add("Sofas x " + quantity + " -- $" + (sofa * quantity));
-                                        found = true;
                                         break;
                                     }
                                 }
-                                if (!found) {
-                                    carts.add("Sofas x " + quantity + " -- $" + (sofa * quantity));
-                                }
+                                // Add new quantity to cart
+                                carts.add("Sofas x " + quantity + " -- $" + (sofa * quantity));
                                 sofaStock = sofaStock - quantity;
                             } else if (input == 2 && quantity <= bedStock) {
                                 quantity += quantity;
@@ -825,6 +821,8 @@ public class main {
                     if (confirm.equals("yes")) {
                         orders.add("Order: " + details);
                         System.out.println("Purchase complete! Thank you!");
+                        carts = new ArrayList<String>(); // Used to clear the array list
+
                     }
                     break;
 
