@@ -33,7 +33,7 @@ public class main {
 
 
         while (true) {
-            System.out.println("Chose a mode: ");
+            System.out.println("Chose a mode: (1/2/3/4/5) ");
             System.out.println(" 1. Admin");
             System.out.println(" 2. User");
             System.out.println(" 3. Update Cart");
@@ -44,7 +44,7 @@ public class main {
 
             switch (choice) {
                 case 1: // Admin feature
-                    System.out.println("Enter the password:     (Password: ilovecoding! ");
+                    System.out.println("Enter the password:     (Password: ilovecoding! )");
                     String password = sc.nextLine();
 
                     if (password.equals("ilovecoding!")){
@@ -237,10 +237,10 @@ public class main {
 
                             // Adding the user's order's to cart
                             if (input == 1 && quantity <= sofaStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Sofas")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Sofas x " + quantity + " -- $" + (sofa * quantity));
                                         found = true;
@@ -252,10 +252,10 @@ public class main {
                                 }
                                 sofaStock = sofaStock - quantity;
                             } else if (input == 2 && quantity <= bedStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Beds")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Beds x " + quantity + " -- $" + (beds * quantity));
                                         found = true;
@@ -267,10 +267,10 @@ public class main {
                                 }
                                 bedStock = bedStock - quantity;
                             } else if (input == 3 && quantity <= tableStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Tables")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Tables x " + quantity + " -- $" + (tables * quantity));
                                         found = true;
@@ -308,10 +308,10 @@ public class main {
 
                             // Adding the user's order's to cart
                             if (input == 1 && quantity <= wallArtStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Wall Art")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Wall Art x " + quantity + " -- $" + (wallArt * quantity));
                                         found = true;
@@ -323,10 +323,10 @@ public class main {
                                 }
                                 wallArtStock = wallArtStock - quantity;
                             } else if (input == 2 && quantity <= clockStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Clocks")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Clocks x " + quantity + " -- $" + (clocks * quantity));
                                         found = true;
@@ -338,9 +338,9 @@ public class main {
                                 }
                                 clockStock = clockStock - quantity;
                             } else if (input == 3 && quantity <= carpetStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
-                                    quantity += quantity;
                                     if (carts.get(i).startsWith("Carpet")) {
                                         carts.remove(i);
                                         carts.add("Carpet x " + quantity + " -- $" + (carpets * quantity));
@@ -379,10 +379,10 @@ public class main {
 
                             // Adding the user's order's to cart
                             if (input == 1 && quantity <= potsPansStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Pots & Pans")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Pots & Pans x " + quantity + " -- $" + (potsPans * quantity));
                                         found = true;
@@ -396,8 +396,8 @@ public class main {
                             } else if (input == 2 && quantity <= platesBowlStock) {
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
+                                    quantity += quantity;
                                     if (carts.get(i).startsWith("Plates & Bowls")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Plates & Bowls x " + quantity + " -- $" + (platesBowls * quantity));
                                         found = true;
@@ -409,10 +409,10 @@ public class main {
                                 }
                                 platesBowlStock = platesBowlStock - quantity;
                             } else if (input == 3 && quantity <= coffeeMachineStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
                                     if (carts.get(i).startsWith("Coffee Machine")) {
-                                        quantity += quantity;
                                         carts.remove(i);
                                         carts.add("Coffee Machine x " + quantity + " -- $" + (coffeeMachine * quantity));
                                         found = true;
