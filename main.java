@@ -394,9 +394,9 @@ public class main {
                                 }
                                 potsPansStock = potsPansStock - quantity;
                             } else if (input == 2 && quantity <= platesBowlStock) {
+                                quantity += quantity;
                                 boolean found = false;
                                 for (int i = 0; i < carts.size(); i++) {
-                                    quantity += quantity;
                                     if (carts.get(i).startsWith("Plates & Bowls")) {
                                         carts.remove(i);
                                         carts.add("Plates & Bowls x " + quantity + " -- $" + (platesBowls * quantity));
