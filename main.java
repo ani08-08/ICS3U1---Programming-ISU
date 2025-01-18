@@ -426,21 +426,318 @@ public class main {
                             } else {
                                 System.out.println("Invalid input or not enough in stock");
                             }
-                        } else {
+                        }
+                        else {
                             System.out.println("Invalid input");
                         }
+
                         System.out.println("Your cart: ");
                         for (String items : carts) {
                             System.out.println(items);
-
                         }
-                    } else if (option.equals("remove")) { // Remove option
+                    } else if (option.equals("remove")){
                         System.out.println("Select the one you want to remove: ");
                         int removeOption = sc.nextInt() - 1;
                         sc.nextLine();
 
                         if (removeOption >= 0 && removeOption < carts.size()) {
-                            carts.remove(removeOption);
+                            String item = carts.get(removeOption);
+                            System.out.println("How many would you like to remove? ");
+                            int removeQuantity = sc.nextInt();
+                            sc.nextLine();
+
+                            if (item.contains("Sofas")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    sofaStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Sofas x1 --$" + sofa);
+                                    sofaStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    sofaStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Sofas x2 --$" + sofa * 2);
+                                    sofaStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Sofas x1 --$" + sofa);
+                                    sofaStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    sofaStock += 3;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Sofas x3 --$" + sofa * 3);
+                                    sofaStock += 1;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Sofas x2 --$" + sofa * 2);
+                                    sofaStock += 2;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 3) {
+                                    carts.set(removeOption, "Sofas x1 --$" + sofa);
+                                    sofaStock += 3;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 4) {
+                                    carts.remove(removeOption);
+                                    sofaStock += 4;
+                                }
+                                else System.out.println("Invalid quantity");
+                            }
+                            else if (item.contains("Beds")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    bedStock += 1;
+                                }
+                                else System.out.println("Invalid quantity to remove");
+                            }
+                            else if (item.contains("Tables")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    tableStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Tables x1 --$" + tables);
+                                    tableStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    tableStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Tables x2 --$" + tables * 2);
+                                    tableStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Tables x1 --$" + tables);
+                                    tableStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    tableStock += 3;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Tables x3 --$" + tables * 3);
+                                    tableStock += 1;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Tables x2 --$" + tables * 2);
+                                    tableStock += 2;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 3) {
+                                    carts.set(removeOption, "Tables x1 --$" + tables);
+                                    tableStock += 3;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 4) {
+                                    carts.remove(removeOption);
+                                    tableStock += 4;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Tables x4 --$" + tables * 4);
+                                    tableStock += 1;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Tables x3 --$" + tables * 3);
+                                    tableStock += 2;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 3) {
+                                    carts.set(removeOption, "Tables x2 --$" + tables * 2);
+                                    tableStock += 3;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 4) {
+                                    carts.set(removeOption, "Tables x1 --$" + tables);
+                                    tableStock += 4;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 5) {
+                                    carts.remove(removeOption);
+                                    tableStock += 5;
+                                }
+                            }
+                            else if (item.contains("Wall Art")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    wallArtStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Wall Art x1 --$" + wallArt);
+                                    wallArtStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    wallArtStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Wall Art x2 --$" + wallArt * 2);
+                                    wallArtStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Wall Art x1 --$" + wallArt);
+                                    wallArtStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    wallArtStock += 3;
+                                }
+                            }
+                            else if (item.contains("Clocks")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    clockStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Clocks x1 --$" + clocks);
+                                    clockStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    clockStock += 2;
+                                }
+                            }
+                            else if (item.contains("Carpets")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    carpetStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Carpets x1 --$" + carpets);
+                                    carpetStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    carpetStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Carpets x2 --$" + carpets * 2);
+                                    carpetStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Carpets x1 --$" + carpets);
+                                    carpetStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    carpetStock += 3;
+                                }
+                            }
+                            else if (item.contains("Pots & Pans")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    potsPansStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Pots & Pans x1 --$" + potsPans);
+                                    potsPansStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    potsPansStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Pots & Pans x2 --$" + potsPans * 2);
+                                    potsPansStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Pots & Pans x1 --$" + potsPans);
+                                    potsPansStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    potsPansStock += 3;
+                                }
+                            }
+                            else if (item.contains("Plates & Bowls")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    platesBowlStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Plates & Bowls x1 --$" + platesBowls);
+                                    platesBowlStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    platesBowlStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Plates & Bowls x2 --$" + platesBowls * 2);
+                                    platesBowlStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Plates & Bowls x1 --$" + platesBowls);
+                                    platesBowlStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    platesBowlStock += 3;
+                                }
+                            }
+                            else if (item.contains("Coffee Machine")){
+                                if (item.contains("x 1") && removeQuantity == 1) {
+                                    carts.remove(removeOption);
+                                    coffeeMachineStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Coffee Machine x1 --$" + coffeeMachine);
+                                    coffeeMachineStock += 1;
+                                }
+                                else if (item.contains("x 2") && removeQuantity == 2) {
+                                    carts.remove(removeOption);
+                                    coffeeMachineStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Coffee Machine x2 --$" + coffeeMachine * 2);
+                                    coffeeMachineStock += 1;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Coffee Machine x1 --$" + coffeeMachine);
+                                    coffeeMachineStock += 2;
+                                }
+                                else if (item.contains("x 3") && removeQuantity == 3) {
+                                    carts.remove(removeOption);
+                                    coffeeMachineStock += 3;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Coffee Machine x3 --$" + coffeeMachine * 3);
+                                    coffeeMachineStock += 1;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Coffee Machine x2 --$" + coffeeMachine * 2);
+                                    coffeeMachineStock += 2;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 3) {
+                                    carts.set(removeOption, "Coffee Machine x1 --$" + coffeeMachine);
+                                    coffeeMachineStock += 3;
+                                }
+                                else if (item.contains("x 4") && removeQuantity == 4) {
+                                    carts.remove(removeOption);
+                                    coffeeMachineStock += 4;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 1) {
+                                    carts.set(removeOption, "Coffee Machine x4 --$" + coffeeMachine * 4);
+                                    coffeeMachineStock += 1;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 2) {
+                                    carts.set(removeOption, "Coffee Machine x3 --$" + coffeeMachine * 3);
+                                    coffeeMachineStock += 2;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 3) {
+                                    carts.set(removeOption, "Coffee Machine x2 --$" + coffeeMachine * 2);
+                                    coffeeMachineStock += 3;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 4) {
+                                    carts.set(removeOption, "Coffee Machine x1 --$" + coffeeMachine);
+                                    coffeeMachineStock += 4;
+                                }
+                                else if (item.contains("x 5") && removeQuantity == 5) {
+                                    carts.remove(removeOption);
+                                    coffeeMachineStock += 5;
+                                }
+                            }
                             System.out.println("Item removed successfully!");
                         } else {
                             System.out.println("Invalid number!");
@@ -450,39 +747,88 @@ public class main {
                         for (String items : carts) {
                             System.out.println(items);
                         }
-
                     }
                     break;
-                case 4:
+                case 4: // Adding the total amount and giving the invoice
                     System.out.println("Invoice: ");
                     double total = 0;
-                    String details = (" Details:   " );
+                    String details = "Details: ";
 
-                    for (String items : carts){
+                    for (String items : carts) {
                         System.out.println(items);
-                        if (items.contains("Sofas")) total += sofa;
-                        if (items.contains("Beds")) total += beds;
-                        if (items.contains("Tables")) total += tables;
-                        if (items.contains("Wall Art")) total += wallArt;
-                        if (items.contains("Clocks")) total += clocks;
-                        if (items.contains("Pots & Pans")) total += potsPans;
-                        if (items.contains("Plates & Bowls")) total += platesBowls;
-                        if (items.contains("Coffee Machine")) total += coffeeMachine;
-
-                        details += items + "";
+                        // Sofas
+                        if (items.contains("Sofas")) {
+                            if (items.contains("x 1")) total += sofa;
+                            else if (items.contains("x 2")) total += sofa * 2;
+                            else if (items.contains("x 3")) total += sofa * 3;
+                            else if (items.contains("x 4")) total += sofa * 4;
+                        }
+                        // Beds
+                        if (items.contains("Beds")) {
+                            if (items.contains("x 1")) total += beds;
+                            else if (items.contains("x 2")) total += beds * 2;
+                            else if (items.contains("x 3")) total += beds * 3;
+                            else if (items.contains("x 4")) total += beds * 4;
+                        }
+                        // Tables
+                        if (items.contains("Tables")) {
+                            if (items.contains("x 1")) total += tables;
+                            else if (items.contains("x 2")) total += tables * 2;
+                            else if (items.contains("x 3")) total += tables * 3;
+                            else if (items.contains("x 4")) total += tables * 4;
+                            else if (items.contains("x 5")) total += tables * 5;
+                        }
+                        // Wall Art
+                        if (items.contains("Wall Art")) {
+                            if (items.contains("x 1")) total += wallArt;
+                            else if (items.contains("x 2")) total += wallArt * 2;
+                            else if (items.contains("x 3")) total += wallArt * 3;
+                        }
+                        // Clocks
+                        if (items.contains("Clocks")) {
+                            if (items.contains("x 1")) total += clocks;
+                            else if (items.contains("x 2")) total += clocks * 2;
+                        }
+                        // Carpets
+                        if (items.contains("Carpets")) {
+                            if (items.contains("x 1")) total += carpets;
+                            else if (items.contains("x 2")) total += carpets * 2;
+                            else if (items.contains("x 3")) total += carpets * 3;
+                        }
+                        // Pots & Pans
+                        if (items.contains("Pots & Pans")) {
+                            if (items.contains("x 1")) total += potsPans;
+                            else if (items.contains("x 2")) total += potsPans * 2;
+                            else if (items.contains("x 3")) total += potsPans * 3;
+                        }
+                        // Plates & Bowls
+                        if (items.contains("Plates & Bowls")) {
+                            if (items.contains("x 1")) total += platesBowls;
+                            else if (items.contains("x 2")) total += platesBowls * 2;
+                            else if (items.contains("x 3")) total += platesBowls * 3;
+                        }
+                        // Coffee Machine
+                        if (items.contains("Coffee Machine")) {
+                            if (items.contains("x 1")) total += coffeeMachine;
+                            else if (items.contains("x 2")) total += coffeeMachine * 2;
+                            else if (items.contains("x 3")) total += coffeeMachine * 3;
+                            else if (items.contains("x 4")) total += coffeeMachine * 4;
+                            else if (items.contains("x 5")) total += coffeeMachine * 5;
+                        }
+                        details += items + " ";
                     }
-
                     System.out.println("Total: $" + total);
+
                     System.out.println("Confirm purchase? | yes/no");
                     String confirm = sc.nextLine().toLowerCase();
 
-                    if (confirm.equals("yes")){
-                        orders.add("Order: " + details) ;
+                    if (confirm.equals("yes")) {
+                        orders.add("Order: " + details);
                         System.out.println("Purchase complete! Thank you!");
                     }
                     break;
 
-                case 5:
+                case 5: // Farewell Message!
                     System.out.println("Thank you for joining!");
                     sc.close();
                     return;
