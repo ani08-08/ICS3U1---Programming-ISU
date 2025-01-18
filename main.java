@@ -38,7 +38,7 @@ public class main {
             System.out.println(" 2. User");
             System.out.println(" 3. Update Cart");
             System.out.println(" 4. Checkout");
-            System.out.println(" 4. Exit");
+            System.out.println(" 5. Exit");
             int choice = sc.nextInt();
             sc.nextLine();
 
@@ -481,15 +481,17 @@ public class main {
                         System.out.println("Purchase complete! Thank you!");
                     }
                     break;
+
                 case 5:
                     System.out.println("Thank you for joining!");
-                    break;
+                    sc.close();
+                    return;
 
                 default:
                     System.out.println("Invalid choice");
-                    sc.close();
-
+                    break;
             }
+
         }
     }
 }
